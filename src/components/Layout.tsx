@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
-import { LogOut, Shield, User } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { LogOut, Shield, User, Home } from 'lucide-react';
 import Button from './Button';
 import { useAuth } from '../context/AuthContext';
 
@@ -27,6 +27,12 @@ const Header = styled.header`
   top: 0;
   z-index: 10;
   box-shadow: ${props => props.theme.shadows.sm};
+`;
+
+const LogoSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${props => props.theme.space[4]};
 `;
 
 const Logo = styled.div`
@@ -77,6 +83,7 @@ const UserInfo = styled.div`
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { isAuthenticated, user, logout } = useAuth();
   
   const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
@@ -88,9 +95,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <Container>
       <Header>
-        <Logo>
-          GMX
-        </Logo>
+        <LogoSection>
+          <Logo>GMX</Logo>
+          {location.pathname !== '/' && (
+            <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
+              <Home size={16} />
+              Home
+            </Button>
+          )}
+        </LogoSection>
         {isAuthenticated && user && (
           <UserSection>
             <UserInfo>
