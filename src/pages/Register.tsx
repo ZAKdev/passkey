@@ -25,7 +25,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: ${props => props.theme.space[4]};
-  background-color: white;
+  background-color: #f3f3f3;
 `;
 
 const RegisterCard = styled(Card)`
@@ -119,7 +119,7 @@ const Footer = styled.div`
   }
 `;
 
-const Register: React.FC = () => {
+const Register = () => {
   const [username, setUsername] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [error, setError] = useState<string | null>(null);

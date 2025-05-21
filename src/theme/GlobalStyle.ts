@@ -109,7 +109,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--font-sans);
     font-size: var(--font-size-base);
     line-height: 1.5;
-    background-color: var(--color-gray-50);
+    background-color: #f3f3f3;
     color: var(--color-gray-900);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -156,26 +156,6 @@ const GlobalStyle = createGlobalStyle`
   button {
     font-family: var(--font-sans);
     cursor: pointer;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-gray-50: #1a3953;
-      --color-gray-100: #334f66;
-      --color-gray-200: #4d6579;
-      --color-gray-300: #667b8c;
-      --color-gray-400: #8091a0;
-      --color-gray-500: #99a7b3;
-      --color-gray-600: #b3bdc6;
-      --color-gray-700: #ccd3d9;
-      --color-gray-800: #e6e9ec;
-      --color-gray-900: #f5f6f7;
-    }
-    
-    body {
-      background-color: var(--color-gray-50);
-      color: var(--color-gray-900);
-    }
   }
 `;
 

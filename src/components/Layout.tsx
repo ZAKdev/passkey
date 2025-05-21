@@ -13,7 +13,7 @@ const Container = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #f3f3f3;
 `;
 
 const Header = styled.header`
@@ -45,7 +45,7 @@ const Main = styled.main`
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  background-color: white;
+  background-color: #f3f3f3;
 `;
 
 const Footer = styled.footer`

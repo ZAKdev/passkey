@@ -25,7 +25,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: ${props => props.theme.space[4]};
-  background-color: white;
+  background-color: #f3f3f3;
 `;
 
 const LoginCard = styled(Card)`
@@ -54,18 +54,10 @@ const Logo = styled.div`
 const Title = styled.h1`
   margin-bottom: ${props => props.theme.space[2]};
   color: ${props => props.theme.colors.gray[900]};
-  
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.colors.gray[50]};
-  }
 `;
 
 const Subtitle = styled.p`
   color: ${props => props.theme.colors.gray[600]};
-  
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.colors.gray[400]};
-  }
 `;
 
 const Form = styled.form`
@@ -94,13 +86,6 @@ const Divider = styled.div`
     padding: 0 ${props => props.theme.space[4]};
     font-size: ${props => props.theme.fontSizes.sm};
   }
-  
-  @media (prefers-color-scheme: dark) {
-    &::before,
-    &::after {
-      background-color: ${props => props.theme.colors.gray[700]};
-    }
-  }
 `;
 
 const PasskeyButton = styled(Button)`
@@ -121,7 +106,7 @@ const Footer = styled.div`
   
   a {
     color: ${props => props.theme.colors.primary[600]};
-    font-weight: 500;
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
     
@@ -132,23 +117,16 @@ const Footer = styled.div`
     
     &:hover {
       text-decoration: none;
+      color: ${props => props.theme.colors.primary[700]};
       
       svg {
         transform: translateX(2px);
       }
     }
   }
-  
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.colors.gray[400]};
-    
-    a {
-      color: ${props => props.theme.colors.primary[400]};
-    }
-  }
 `;
 
-const Login: React.FC = () => {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -204,9 +182,7 @@ const Login: React.FC = () => {
     <Container>
       <LoginCard>
         <CardHeader>
-          <Logo>
-            GMX
-          </Logo>
+          <Logo>GMX</Logo>
           <Title>Welcome Back</Title>
           <Subtitle>Sign in to your account using passkeys</Subtitle>
         </CardHeader>
