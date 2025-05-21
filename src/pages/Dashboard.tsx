@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import { PlusCircle, Fingerprint, Key, KeyRound, Shield, ArrowRight, Smartphone, Home } from 'lucide-react';
+import { PlusCircle, Fingerprint, Key, KeyRound, Shield, ArrowRight, Smartphone } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import { useAuth } from '../context/AuthContext';
@@ -12,31 +11,9 @@ const DashboardContainer = styled.div`
   margin: 0 auto;
   position: relative;
   padding: 1rem;
-  padding-top: ${props => props.theme.space[12]};
   
   @media (min-width: 768px) {
     padding: 2rem;
-    padding-top: ${props => props.theme.space[12]};
-  }
-`;
-
-const BackButton = styled(Button)`
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  
-  svg {
-    margin: 0;
-  }
-  
-  @media (min-width: 768px) {
-    left: 2rem;
   }
 `;
 
@@ -255,14 +232,9 @@ const Dashboard: React.FC = () => {
   const { user } = useAuth();
   const [showSetupAlert, setShowSetupAlert] = useState(true);
   const [passkeys, setPasskeys] = useState(mockPasskeys);
-  const navigate = useNavigate();
   
   return (
     <DashboardContainer>
-      <BackButton variant="outline" onClick={() => navigate('/')}>
-        <Home size={16} />
-      </BackButton>
-
       <WelcomeSection>
         <Title>Welcome back, {user?.displayName || 'User'}!</Title>
         <Subtitle>Manage your passkeys and security settings</Subtitle>
@@ -279,7 +251,6 @@ const Dashboard: React.FC = () => {
       </WelcomeSection>
       
       <Grid>
-        
         <Card>
           <CardContent>
             <IconWrapper>
