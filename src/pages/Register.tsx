@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Fingerprint, Mail, User, ArrowRight, Info } from 'lucide-react';
+import { Fingerprint, Mail, User, ArrowRight, Info, Home } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -24,14 +24,49 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${props => props.theme.space[4]};
+  padding: 1rem;
   background-color: #f3f3f3;
+  position: relative;
+  
+  @media (min-width: 768px) {
+    padding: ${props => props.theme.space[4]};
+  }
+`;
+
+const BackButton = styled(Button)`
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  svg {
+    margin: 0;
+  }
+  
+  @media (min-width: 768px) {
+    position: absolute;
+  }
 `;
 
 const RegisterCard = styled(Card)`
   width: 100%;
   max-width: 450px;
   animation: ${fadeIn} 0.5s ease-out;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  
+  @media (min-width: 768px) {
+    padding: ${props => props.theme.space[6]};
+    margin-top: 0;
+  }
 `;
 
 const CardHeader = styled.div`
@@ -44,22 +79,34 @@ const Logo = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: ${props => props.theme.space[6]};
-  font-size: ${props => props.theme.fontSizes['4xl']};
+  font-size: 2rem;
   font-weight: 700;
   color: ${props => props.theme.colors.primary[600]};
   text-transform: uppercase;
   letter-spacing: -1px;
+  
+  @media (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes['4xl']};
+  }
 `;
 
 const Title = styled.h1`
   margin-bottom: ${props => props.theme.space[2]};
   color: ${props => props.theme.colors.gray[900]};
-  font-size: ${props => props.theme.fontSizes['2xl']};
+  font-size: 1.5rem;
+  
+  @media (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes['2xl']};
+  }
 `;
 
 const Subtitle = styled.p`
   color: ${props => props.theme.colors.gray[600]};
-  font-size: ${props => props.theme.fontSizes.base};
+  font-size: 0.875rem;
+  
+  @media (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes.base};
+  }
 `;
 
 const Form = styled.form`
@@ -77,10 +124,10 @@ const InfoBox = styled.div`
   margin-bottom: ${props => props.theme.space[6]};
   display: flex;
   align-items: flex-start;
+  gap: ${props => props.theme.space[3]};
   border: 1px solid ${props => props.theme.colors.primary[100]};
   
   svg {
-    margin-right: ${props => props.theme.space[3]};
     min-width: 20px;
     color: ${props => props.theme.colors.primary[600]};
   }
@@ -102,12 +149,7 @@ const Footer = styled.div`
     font-weight: 600;
     display: inline-flex;
     align-items: center;
-    text-decoration: none;
-    
-    svg {
-      margin-left: ${props => props.theme.space[1]};
-      transition: transform 0.2s;
-    }
+    gap: ${props => props.theme.space[1]};
     
     &:hover {
       color: #587a03;
@@ -116,6 +158,10 @@ const Footer = styled.div`
       svg {
         transform: translateX(2px);
       }
+    }
+    
+    svg {
+      transition: transform 0.2s;
     }
   }
 `;
@@ -152,7 +198,11 @@ const Register = () => {
         setError('Registration failed. Please try a different username.');
       }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('An error occurred. Please try again.');
+      }
       console.error(error);
     } finally {
       setIsSubmitting(false);
@@ -161,6 +211,10 @@ const Register = () => {
   
   return (
     <Container>
+      <BackButton variant="outline" onClick={() => navigate('/')}>
+        <Home size={16} />
+      </BackButton>
+      
       <RegisterCard>
         <CardHeader>
           <Logo>GMX</Logo>

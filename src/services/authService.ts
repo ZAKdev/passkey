@@ -155,6 +155,7 @@ export const startLogin = async (
 };
 
 export const verifyLogin = async (
+  username: string,
   credential: any
 ): Promise<VerifyAuthenticationResponse> => {
   await new Promise(resolve => setTimeout(resolve, MOCK_DELAY));
@@ -183,7 +184,8 @@ export const verifyLogin = async (
   } catch (error) {
     console.error('Login verification error:', error);
     return {
-      verified: false
+      verified: false,
+      error: 'An unexpected error occurred during login verification.'
     };
   }
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Fingerprint, Mail, ArrowRight } from 'lucide-react';
+import { Fingerprint, Mail, ArrowRight, Home } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -24,14 +24,49 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${props => props.theme.space[4]};
+  padding: 1rem;
   background-color: #f3f3f3;
+  position: relative;
+  
+  @media (min-width: 768px) {
+    padding: ${props => props.theme.space[4]};
+  }
+`;
+
+const BackButton = styled(Button)`
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  svg {
+    margin: 0;
+  }
+  
+  @media (min-width: 768px) {
+    position: absolute;
+  }
 `;
 
 const LoginCard = styled(Card)`
   width: 100%;
   max-width: 450px;
   animation: ${fadeIn} 0.5s ease-out;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  
+  @media (min-width: 768px) {
+    padding: ${props => props.theme.space[6]};
+    margin-top: 0;
+  }
 `;
 
 const CardHeader = styled.div`
@@ -44,20 +79,34 @@ const Logo = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: ${props => props.theme.space[6]};
-  font-size: ${props => props.theme.fontSizes['4xl']};
+  font-size: 2rem;
   font-weight: 700;
   color: #1c449b;
   text-transform: uppercase;
   letter-spacing: -1px;
+  
+  @media (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes['4xl']};
+  }
 `;
 
 const Title = styled.h1`
   margin-bottom: ${props => props.theme.space[2]};
-  color: #1c449b;
+  color: ${props => props.theme.colors.gray[900]};
+  font-size: 1.5rem;
+  
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const Subtitle = styled.p`
   color: ${props => props.theme.colors.gray[600]};
+  font-size: 0.875rem;
+  
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const Form = styled.form`
@@ -89,14 +138,11 @@ const Divider = styled.div`
 `;
 
 const PasskeyButton = styled(Button)`
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: ${props => props.theme.space[4]};
-  
-  svg {
-    margin-right: ${props => props.theme.space[2]};
-  }
+  gap: ${props => props.theme.space[2]};
 `;
 
 const Footer = styled.div`
@@ -150,10 +196,14 @@ const Login = () => {
       if (success) {
         navigate('/dashboard');
       } else {
-        setError('Authentication failed. Try again with a different username or register a new account.');
+        setError('Authentication failed. Please check your username and try again.');
       }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('An error occurred. Please try again.');
+      }
       console.error(error);
     } finally {
       setIsSubmitting(false);
@@ -169,10 +219,14 @@ const Login = () => {
       if (success) {
         navigate('/dashboard');
       } else {
-        setError('No passkey found. Please enter a username or register a new account.');
+        setError('No passkey found. Please register first or use username login.');
       }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('An error occurred. Please try again.');
+      }
       console.error(error);
     } finally {
       setIsSubmitting(false);
@@ -181,6 +235,10 @@ const Login = () => {
   
   return (
     <Container>
+      <BackButton variant="outline" onClick={() => navigate('/')}>
+        <Home size={16} />
+      </BackButton>
+      
       <LoginCard>
         <CardHeader>
           <Logo>GMX</Logo>
@@ -194,7 +252,7 @@ const Login = () => {
           </Alert>
         )}
         
-        <PasskeyButton fullWidth onClick={handlePasskeyLogin} disabled={isSubmitting}>
+        <PasskeyButton onClick={handlePasskeyLogin} disabled={isSubmitting}>
           <Fingerprint size={20} />
           Sign in with Passkey
         </PasskeyButton>
