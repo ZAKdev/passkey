@@ -14,10 +14,10 @@ interface AlertProps {
 const variantStyles = {
   info: css`
     background-color: ${props => props.theme.colors.primary[50]};
-    border-color: ${props => props.theme.colors.primary[300]};
+    border: 1px solid ${props => props.theme.colors.primary[100]};
     
     .alert-icon {
-      color: ${props => props.theme.colors.primary[500]};
+      color: ${props => props.theme.colors.primary[600]};
     }
     
     .alert-title {
@@ -26,19 +26,19 @@ const variantStyles = {
   `,
   success: css`
     background-color: ${props => props.theme.colors.success[50]};
-    border-color: ${props => props.theme.colors.secondary[300]};
+    border: 1px solid ${props => props.theme.colors.success[100]};
     
     .alert-icon {
-      color: ${props => props.theme.colors.secondary[500]};
+      color: ${props => props.theme.colors.success[500]};
     }
     
     .alert-title {
-      color: ${props => props.theme.colors.secondary[700]};
+      color: ${props => props.theme.colors.success[700]};
     }
   `,
   warning: css`
     background-color: ${props => props.theme.colors.warning[50]};
-    border-color: ${props => props.theme.colors.warning[300]};
+    border: 1px solid ${props => props.theme.colors.warning[100]};
     
     .alert-icon {
       color: ${props => props.theme.colors.warning[500]};
@@ -50,7 +50,7 @@ const variantStyles = {
   `,
   error: css`
     background-color: ${props => props.theme.colors.error[50]};
-    border-color: ${props => props.theme.colors.error[300]};
+    border: 1px solid ${props => props.theme.colors.error[100]};
     
     .alert-icon {
       color: ${props => props.theme.colors.error[500]};
@@ -66,24 +66,10 @@ const AlertContainer = styled.div<{ variant: AlertVariant }>`
   position: relative;
   display: flex;
   padding: ${props => props.theme.space[4]};
-  border-radius: ${props => props.theme.radii.md};
-  border-left: 4px solid;
+  border-radius: ${props => props.theme.radii.base};
+  margin-bottom: ${props => props.theme.space[4]};
   
   ${props => variantStyles[props.variant]}
-  
-  /* Add subtle animation */
-  animation: alertFadeIn 0.3s ease-out;
-  
-  @keyframes alertFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 `;
 
 const IconContainer = styled.div`
@@ -104,15 +90,12 @@ const Content = styled.div`
 const Title = styled.div`
   font-weight: 600;
   margin-bottom: ${props => props.theme.space[1]};
+  font-size: ${props => props.theme.fontSizes.base};
 `;
 
 const Message = styled.div`
   color: ${props => props.theme.colors.gray[700]};
   font-size: ${props => props.theme.fontSizes.sm};
-  
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.colors.gray[300]};
-  }
 `;
 
 const CloseButton = styled.button`
