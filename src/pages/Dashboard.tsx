@@ -100,7 +100,7 @@ const Section = styled.div`
 
 const SectionTitle = styled.h2`
   margin-bottom: ${props => props.theme.space[4]};
-  color: ${props => props.theme.colors.gray[900]};
+  color: #1c449b;
   display: flex;
   align-items: center;
   
