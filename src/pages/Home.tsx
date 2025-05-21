@@ -44,6 +44,17 @@ const UserName = styled.span`
   font-weight: 500;
 `;
 
+const AuthButton = styled(Button)`
+  background-color: white;
+  color: #1e4b9c;
+  border: none;
+  
+  &:hover {
+    background-color: #f8f9fa;
+    color: #1e4b9c;
+  }
+`;
+
 const HeroSection = styled.div`
   background: linear-gradient(135deg, #1e4b9c 0%, #2c3e50 100%);
   color: white;
@@ -154,9 +165,9 @@ const Home = () => {
           {isAuthenticated && user && (
             <UserName>Welcome, {user.displayName}</UserName>
           )}
-          <Button variant="outline" onClick={handleAuthAction}>
+          <AuthButton onClick={handleAuthAction}>
             {isAuthenticated ? 'Logout' : 'Log in'}
-          </Button>
+          </AuthButton>
         </UserSection>
       </Navbar>
 
