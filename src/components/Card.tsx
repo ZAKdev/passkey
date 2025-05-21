@@ -23,7 +23,6 @@ const Card = styled.div<CardProps>`
   box-shadow: ${props => elevations[props.elevation || 'md']};
   padding: ${props => paddings[props.padding || 'md']};
   transition: box-shadow 0.2s ease;
-  border: 1px solid var(--color-gray-100);
   
   &:hover {
     box-shadow: ${props => elevations[props.elevation === 'sm' ? 'md' : 'lg']};
