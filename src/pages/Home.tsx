@@ -32,6 +32,18 @@ const Logo = styled.div`
   }
 `;
 
+const UserSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const UserName = styled.span`
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+`;
+
 const HeroSection = styled.div`
   background: linear-gradient(135deg, #1e4b9c 0%, #2c3e50 100%);
   color: white;
@@ -123,7 +135,7 @@ const FeatureDescription = styled.p`
 
 const Home = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
 
   const handleAuthAction = () => {
     if (isAuthenticated) {
@@ -138,9 +150,14 @@ const Home = () => {
     <Container>
       <Navbar>
         <Logo>GMX</Logo>
-        <Button variant="outline" onClick={handleAuthAction}>
-          {isAuthenticated ? 'Logout' : 'Log in'}
-        </Button>
+        <UserSection>
+          {isAuthenticated && user && (
+            <UserName>Welcome, {user.displayName}</UserName>
+          )}
+          <Button variant="outline" onClick={handleAuthAction}>
+            {isAuthenticated ? 'Logout' : 'Log in'}
+          </Button>
+        </UserSection>
       </Navbar>
 
       <HeroSection>
