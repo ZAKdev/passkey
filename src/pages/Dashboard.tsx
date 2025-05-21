@@ -16,7 +16,7 @@ const WelcomeSection = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #1c449b;
+  color: red;
   margin-bottom: ${props => props.theme.space[2]};
   
   @media (prefers-color-scheme: dark) {
@@ -100,7 +100,7 @@ const Section = styled.div`
 
 const SectionTitle = styled.h2`
   margin-bottom: ${props => props.theme.space[4]};
-  color: #1c449b;
+  color: red;
   display: flex;
   align-items: center;
   
