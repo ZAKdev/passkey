@@ -124,14 +124,20 @@ export const startLogin = async (
 };
 
 export const verifyLogin = async (
+  username: string,
   credential: any
 ): Promise<VerifyAuthenticationResponse> => {
   await new Promise(resolve => setTimeout(resolve, MOCK_DELAY));
   
   try {
-    // For demo purposes, find the first registered user
-    const username = Array.from(registeredUsers.keys())[0];
-    const user = registeredUsers.get(username);
+    // If no username is provided, get the first registered user
+    let user: User | undefined;
+    
+    if (!username) {
+      user = Array.from(registeredUsers.values())[0];
+    } else {
+      user = registeredUsers.get(username);
+    }
     
     if (!user) {
       throw new Error('No registered users found');

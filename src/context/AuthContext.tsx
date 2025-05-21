@@ -139,7 +139,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const processedCredential = processCredentialData(credential);
       
       // Verify with server
-      const verification = await verifyLogin(processedCredential);
+      const verification = await verifyLogin(username, processedCredential);
       
       if (verification.verified && verification.user) {
         setState({
