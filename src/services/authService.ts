@@ -160,17 +160,25 @@ export const verifyLogin = async (
   await new Promise(resolve => setTimeout(resolve, MOCK_DELAY));
   
   try {
-    // For demo purposes, find the first registered user
-    const username = Array.from(registeredUsers.keys())[0];
-    const user = registeredUsers.get(username);
+    // Find the user by credential ID
+    let matchedUser: User | undefined;
+    let matchedUsername: string | undefined;
     
-    if (!user) {
-      throw new Error('No registered users found');
+    for (const [username, storedCredential] of mockCredentials.entries()) {
+      if (storedCredential.id === credential.id) {
+        matchedUsername = username;
+        matchedUser = registeredUsers.get(username);
+        break;
+      }
+    }
+    
+    if (!matchedUser || !matchedUsername) {
+      throw new Error('No matching credential found');
     }
     
     return {
       verified: true,
-      user
+      user: matchedUser
     };
   } catch (error) {
     console.error('Login verification error:', error);
