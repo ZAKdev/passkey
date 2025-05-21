@@ -34,23 +34,25 @@ const Container = styled.div`
 `;
 
 const BackButton = styled(Button)`
-  position: absolute;
+  position: fixed;
   top: 1rem;
   left: 1rem;
+  z-index: 10;
   width: 40px;
   height: 40px;
   padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
   svg {
     margin: 0;
   }
   
   @media (min-width: 768px) {
-    top: ${props => props.theme.space[4]};
-    left: ${props => props.theme.space[4]};
+    position: absolute;
   }
 `;
 
@@ -59,9 +61,11 @@ const RegisterCard = styled(Card)`
   max-width: 450px;
   animation: ${fadeIn} 0.5s ease-out;
   padding: 1.5rem;
+  margin-top: 3rem;
   
   @media (min-width: 768px) {
     padding: ${props => props.theme.space[6]};
+    margin-top: 0;
   }
 `;
 
@@ -120,10 +124,10 @@ const InfoBox = styled.div`
   margin-bottom: ${props => props.theme.space[6]};
   display: flex;
   align-items: flex-start;
+  gap: ${props => props.theme.space[3]};
   border: 1px solid ${props => props.theme.colors.primary[100]};
   
   svg {
-    margin-right: ${props => props.theme.space[3]};
     min-width: 20px;
     color: ${props => props.theme.colors.primary[600]};
   }
@@ -145,11 +149,7 @@ const Footer = styled.div`
     font-weight: 600;
     display: inline-flex;
     align-items: center;
-    
-    svg {
-      margin-left: ${props => props.theme.space[1]};
-      transition: transform 0.2s;
-    }
+    gap: ${props => props.theme.space[1]};
     
     &:hover {
       text-decoration: none;
@@ -158,6 +158,10 @@ const Footer = styled.div`
       svg {
         transform: translateX(2px);
       }
+    }
+    
+    svg {
+      transition: transform 0.2s;
     }
   }
 `;
@@ -194,7 +198,11 @@ const Register = () => {
         setError('Registration failed. Please try a different username.');
       }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('An error occurred. Please try again.');
+      }
       console.error(error);
     } finally {
       setIsSubmitting(false);
