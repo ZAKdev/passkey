@@ -130,17 +130,42 @@ export const verifyLogin = async (
   await new Promise(resolve => setTimeout(resolve, MOCK_DELAY));
   
   try {
-    // If no username is provided, get the first registered user
     let user: User | undefined;
     
     if (!username) {
-      user = Array.from(registeredUsers.values())[0];
+      // For passkey login, check all registered users
+      for (const [storedUsername, storedCredential] of mockCredentials.entries()) {
+        // In a real implementation, we would verify the credential against the stored one
+        // For this mock, we'll just check if any user has a credential
+        if (storedCredential) {
+          user = registeredUsers.get(storedUsername);
+          if (user) break;
+        }
+      }
+      
+      if (!user) {
+        return {
+          verified: false,
+          error: 'No passkey found. Please register first or use username login.'
+        };
+      }
     } else {
+      // For username login, check specific user
       user = registeredUsers.get(username);
-    }
-    
-    if (!user) {
-      throw new Error('No registered users found');
+      if (!user) {
+        return {
+          verified: false,
+          error: 'User not found. Please register first.'
+        };
+      }
+      
+      const storedCredential = mockCredentials.get(username);
+      if (!storedCredential) {
+        return {
+          verified: false,
+          error: 'No passkey found for this user.'
+        };
+      }
     }
     
     return {
@@ -150,7 +175,8 @@ export const verifyLogin = async (
   } catch (error) {
     console.error('Login verification error:', error);
     return {
-      verified: false
+      verified: false,
+      error: 'An unexpected error occurred during login verification.'
     };
   }
 };

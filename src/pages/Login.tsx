@@ -190,10 +190,14 @@ const Login = () => {
       if (success) {
         navigate('/dashboard');
       } else {
-        setError('Authentication failed. Try again with a different username or register a new account.');
+        setError('Authentication failed. Please check your username and try again.');
       }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('An error occurred. Please try again.');
+      }
       console.error(error);
     } finally {
       setIsSubmitting(false);
@@ -209,10 +213,14 @@ const Login = () => {
       if (success) {
         navigate('/dashboard');
       } else {
-        setError('No passkey found. Please enter a username or register a new account.');
+        setError('No passkey found. Please register first or use username login.');
       }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('An error occurred. Please try again.');
+      }
       console.error(error);
     } finally {
       setIsSubmitting(false);
