@@ -18,6 +18,12 @@ const BackButton = styled(Button)`
   position: absolute;
   top: ${props => props.theme.space[4]};
   left: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const WelcomeSection = styled.div`

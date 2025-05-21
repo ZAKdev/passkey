@@ -33,6 +33,12 @@ const BackButton = styled(Button)`
   position: absolute;
   top: ${props => props.theme.space[4]};
   left: ${props => props.theme.space[4]};
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const LoginCard = styled(Card)`
