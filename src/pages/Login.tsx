@@ -46,14 +46,14 @@ const Logo = styled.div`
   margin-bottom: ${props => props.theme.space[6]};
   font-size: ${props => props.theme.fontSizes['4xl']};
   font-weight: 700;
-  color: ${props => props.theme.colors.primary[600]};
+  color: #1c449b;
   text-transform: uppercase;
   letter-spacing: -1px;
 `;
 
 const Title = styled.h1`
   margin-bottom: ${props => props.theme.space[2]};
-  color: ${props => props.theme.colors.gray[900]};
+  color: #1c449b;
 `;
 
 const Subtitle = styled.p`
