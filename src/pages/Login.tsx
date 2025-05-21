@@ -26,6 +26,13 @@ const Container = styled.div`
   justify-content: center;
   padding: ${props => props.theme.space[4]};
   background-color: #f3f3f3;
+  position: relative;
+`;
+
+const BackButton = styled(Button)`
+  position: absolute;
+  top: ${props => props.theme.space[4]};
+  left: ${props => props.theme.space[4]};
 `;
 
 const LoginCard = styled(Card)`
@@ -89,6 +96,7 @@ const Divider = styled.div`
 `;
 
 const PasskeyButton = styled(Button)`
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,12 +105,6 @@ const PasskeyButton = styled(Button)`
   svg {
     margin-right: ${props => props.theme.space[2]};
   }
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: ${props => props.theme.space[4]};
-  margin-bottom: ${props => props.theme.space[4]};
 `;
 
 const Footer = styled.div`
@@ -186,6 +188,11 @@ const Login = () => {
   
   return (
     <Container>
+      <BackButton variant="outline" onClick={() => navigate('/')}>
+        <ArrowLeft size={16} />
+        Back to Home
+      </BackButton>
+      
       <LoginCard>
         <CardHeader>
           <Logo>GMX</Logo>
@@ -199,16 +206,10 @@ const Login = () => {
           </Alert>
         )}
         
-        <ButtonGroup>
-          <Button variant="outline" onClick={() => navigate('/')}>
-            <ArrowLeft size={20} />
-            Back to Home
-          </Button>
-          <PasskeyButton onClick={handlePasskeyLogin} disabled={isSubmitting}>
-            <Fingerprint size={20} />
-            Sign in with Passkey
-          </PasskeyButton>
-        </ButtonGroup>
+        <PasskeyButton onClick={handlePasskeyLogin} disabled={isSubmitting}>
+          <Fingerprint size={20} />
+          Sign in with Passkey
+        </PasskeyButton>
         
         <Divider>
           <span>or continue with username</span>
