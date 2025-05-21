@@ -20,9 +20,37 @@ const VERIFY_LOGIN_URL = `${API_BASE_URL}/verify-login`;
 // For demo purposes, we'll mock the API responses
 const MOCK_DELAY = 500; // ms
 
-// Store credentials in memory for demo (in a real app, this would be on a server)
-let registeredUsers: Map<string, User> = new Map();
-let mockCredentials: Map<string, any> = new Map();
+// Initialize storage with persisted data if available
+const loadPersistedData = () => {
+  try {
+    const persistedUsers = localStorage.getItem('registeredUsers');
+    const persistedCredentials = localStorage.getItem('mockCredentials');
+    
+    return {
+      users: persistedUsers ? new Map(Object.entries(JSON.parse(persistedUsers))) : new Map<string, User>(),
+      credentials: persistedCredentials ? new Map(Object.entries(JSON.parse(persistedCredentials))) : new Map<string, any>()
+    };
+  } catch (error) {
+    console.error('Error loading persisted data:', error);
+    return {
+      users: new Map<string, User>(),
+      credentials: new Map<string, any>()
+    };
+  }
+};
+
+// Initialize with persisted data
+let { users: registeredUsers, credentials: mockCredentials } = loadPersistedData();
+
+// Helper to persist data to localStorage
+const persistData = () => {
+  try {
+    localStorage.setItem('registeredUsers', JSON.stringify(Object.fromEntries(registeredUsers)));
+    localStorage.setItem('mockCredentials', JSON.stringify(Object.fromEntries(mockCredentials)));
+  } catch (error) {
+    console.error('Error persisting data:', error);
+  }
+};
 
 // Helper to generate random ID
 const generateId = () => Math.random().toString(36).substring(2, 15);
@@ -93,6 +121,9 @@ export const verifyRegistration = async (
     };
     
     registeredUsers.set(username, user);
+    
+    // Persist the updated data
+    persistData();
     
     return {
       verified: true,
