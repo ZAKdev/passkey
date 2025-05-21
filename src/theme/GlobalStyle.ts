@@ -144,12 +144,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: var(--color-primary-600);
+    color: #6e9804;
     text-decoration: none;
+    font-weight: 600;
     
     &:hover {
-      color: var(--color-primary-700);
-      text-decoration: underline;
+      color: #587a03;
+      text-decoration: none;
     }
   }
 
