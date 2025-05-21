@@ -33,61 +33,62 @@ const sizeStyles = {
 
 const variantStyles = {
   primary: css`
-    background-color: ${props => props.theme.colors.primary[500]};
+    background-color: #6e9804;
     color: white;
     border: none;
     font-weight: 600;
     
     &:hover:not(:disabled) {
-      background-color: ${props => props.theme.colors.primary[600]};
+      background-color: #587a03;
     }
     
     &:active:not(:disabled) {
-      background-color: ${props => props.theme.colors.primary[700]};
+      background-color: #587a03;
     }
   `,
   secondary: css`
-    background-color: ${props => props.theme.colors.secondary[500]};
+    background-color: #6e9804;
     color: white;
     border: none;
     font-weight: 600;
     
     &:hover:not(:disabled) {
-      background-color: ${props => props.theme.colors.secondary[600]};
+      background-color: #587a03;
     }
     
     &:active:not(:disabled) {
-      background-color: ${props => props.theme.colors.secondary[700]};
+      background-color: #587a03;
     }
   `,
   outline: css`
     background-color: transparent;
-    color: ${props => props.theme.colors.primary[600]};
-    border: 1px solid ${props => props.theme.colors.primary[600]};
+    color: #6e9804;
+    border: 1px solid #6e9804;
     font-weight: 600;
     
     &:hover:not(:disabled) {
-      background-color: ${props => props.theme.colors.primary[50]};
-      border-color: ${props => props.theme.colors.primary[700]};
-      color: ${props => props.theme.colors.primary[700]};
+      background-color: #f7f9f2;
+      border-color: #587a03;
+      color: #587a03;
     }
     
     &:active:not(:disabled) {
-      background-color: ${props => props.theme.colors.primary[100]};
+      background-color: #f7f9f2;
     }
   `,
   ghost: css`
     background-color: transparent;
-    color: ${props => props.theme.colors.primary[600]};
+    color: #6e9804;
     border: none;
     font-weight: 600;
     
     &:hover:not(:disabled) {
-      background-color: ${props => props.theme.colors.primary[50]};
+      background-color: #f7f9f2;
+      color: #587a03;
     }
     
     &:active:not(:disabled) {
-      background-color: ${props => props.theme.colors.primary[100]};
+      background-color: #f7f9f2;
     }
   `,
   danger: css`
