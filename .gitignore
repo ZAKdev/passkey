@@ -14,3 +14,5 @@ UserInterfaceState.xcuserstate
 .env
 
 dist
+package-lock.json
+pnpm-lock.yaml
