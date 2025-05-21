@@ -24,7 +24,6 @@ const BackButton = styled(Button)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
   
   svg {
     margin: 0;
