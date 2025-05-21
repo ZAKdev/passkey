@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Fingerprint, Mail, User, ArrowRight, Info } from 'lucide-react';
+import { Fingerprint, Mail, User, ArrowRight, Info, ArrowLeft } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -26,6 +26,13 @@ const Container = styled.div`
   justify-content: center;
   padding: ${props => props.theme.space[4]};
   background-color: #f3f3f3;
+  position: relative;
+`;
+
+const BackButton = styled(Button)`
+  position: absolute;
+  top: ${props => props.theme.space[4]};
+  left: ${props => props.theme.space[4]};
 `;
 
 const RegisterCard = styled(Card)`
@@ -160,6 +167,11 @@ const Register = () => {
   
   return (
     <Container>
+      <BackButton variant="outline" onClick={() => navigate('/')}>
+        <ArrowLeft size={16} />
+        Back to Home
+      </BackButton>
+
       <RegisterCard>
         <CardHeader>
           <Logo>GMX</Logo>

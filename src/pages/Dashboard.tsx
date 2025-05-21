@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { PlusCircle, Fingerprint, Key, KeyRound, Shield, ArrowRight, Smartphone } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { PlusCircle, Fingerprint, Key, KeyRound, Shield, ArrowRight, Smartphone, ArrowLeft } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import { useAuth } from '../context/AuthContext';
@@ -9,6 +10,14 @@ import Alert from '../components/Alert';
 const DashboardContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  padding-top: ${props => props.theme.space[12]};
+`;
+
+const BackButton = styled(Button)`
+  position: absolute;
+  top: ${props => props.theme.space[4]};
+  left: 0;
 `;
 
 const WelcomeSection = styled.div`
@@ -215,9 +224,15 @@ const Dashboard: React.FC = () => {
   const { user } = useAuth();
   const [showSetupAlert, setShowSetupAlert] = useState(true);
   const [passkeys, setPasskeys] = useState(mockPasskeys);
+  const navigate = useNavigate();
   
   return (
     <DashboardContainer>
+      <BackButton variant="outline" onClick={() => navigate('/')}>
+        <ArrowLeft size={16} />
+        Back to Home
+      </BackButton>
+
       <WelcomeSection>
         <Title>Welcome back, {user?.displayName || 'User'}!</Title>
         <Subtitle>Manage your passkeys and security settings</Subtitle>
