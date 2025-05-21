@@ -11,13 +11,19 @@ const DashboardContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  padding: 1rem;
   padding-top: ${props => props.theme.space[12]};
+  
+  @media (min-width: 768px) {
+    padding: 2rem;
+    padding-top: ${props => props.theme.space[12]};
+  }
 `;
 
 const BackButton = styled(Button)`
   position: absolute;
-  top: ${props => props.theme.space[4]};
-  left: 0;
+  top: 1rem;
+  left: 1rem;
   width: 40px;
   height: 40px;
   padding: 0;
@@ -28,6 +34,10 @@ const BackButton = styled(Button)`
   svg {
     margin: 0;
   }
+  
+  @media (min-width: 768px) {
+    left: 2rem;
+  }
 `;
 
 const WelcomeSection = styled.div`
@@ -37,30 +47,32 @@ const WelcomeSection = styled.div`
 const Title = styled.h1`
   color: ${props => props.theme.colors.gray[900]};
   margin-bottom: ${props => props.theme.space[2]};
+  font-size: 1.5rem;
   
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.colors.gray[50]};
+  @media (min-width: 768px) {
+    font-size: 2rem;
   }
 `;
 
 const Subtitle = styled.p`
   color: ${props => props.theme.colors.gray[600]};
-  font-size: ${props => props.theme.fontSizes.lg};
+  font-size: 1rem;
   margin-bottom: ${props => props.theme.space[6]};
   
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.colors.gray[400]};
+  @media (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes.lg};
   }
 `;
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: ${props => props.theme.space[6]};
+  grid-template-columns: 1fr;
+  gap: ${props => props.theme.space[4]};
   margin-bottom: ${props => props.theme.space[8]};
   
-  @media (max-width: ${props => props.theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: ${props => props.theme.space[6]};
   }
 `;
 
@@ -70,11 +82,16 @@ const CardContent = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
+  padding: 1.5rem;
+  
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
 `;
 
 const IconWrapper = styled.div`
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background-color: ${props => props.theme.colors.primary[50]};
   display: flex;
@@ -84,32 +101,39 @@ const IconWrapper = styled.div`
   color: ${props => props.theme.colors.primary[500]};
   
   svg {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
   }
   
-  @media (prefers-color-scheme: dark) {
-    background-color: ${props => props.theme.colors.primary[900]};
+  @media (min-width: 768px) {
+    width: 64px;
+    height: 64px;
+    
+    svg {
+      width: 32px;
+      height: 32px;
+    }
   }
 `;
 
 const CardTitle = styled.h3`
   margin-bottom: ${props => props.theme.space[3]};
   color: ${props => props.theme.colors.gray[900]};
+  font-size: 1.25rem;
   
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.colors.gray[50]};
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
   }
 `;
 
 const CardDescription = styled.p`
   color: ${props => props.theme.colors.gray[600]};
-  font-size: ${props => props.theme.fontSizes.md};
+  font-size: 0.875rem;
   margin-bottom: ${props => props.theme.space[4]};
   flex-grow: 1;
   
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.colors.gray[400]};
+  @media (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes.md};
   }
 `;
 
@@ -122,13 +146,14 @@ const SectionTitle = styled.h2`
   color: ${props => props.theme.colors.gray[900]};
   display: flex;
   align-items: center;
+  font-size: 1.25rem;
   
   svg {
     margin-right: ${props => props.theme.space[2]};
   }
   
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.colors.gray[50]};
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
   }
 `;
 
@@ -139,10 +164,15 @@ const KeysList = styled.div`
 
 const KeyCard = styled(Card)`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   padding: ${props => props.theme.space[4]};
   transition: transform 0.2s;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
   
   &:hover {
     transform: translateY(-2px);
@@ -152,6 +182,11 @@ const KeyCard = styled(Card)`
 const KeyDetails = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
+  
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 
 const KeyInfo = styled.div`
@@ -161,19 +196,11 @@ const KeyInfo = styled.div`
 const KeyName = styled.div`
   font-weight: 500;
   color: ${props => props.theme.colors.gray[900]};
-  
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.colors.gray[50]};
-  }
 `;
 
 const KeyMeta = styled.div`
   font-size: ${props => props.theme.fontSizes.sm};
   color: ${props => props.theme.colors.gray[500]};
-  
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.colors.gray[400]};
-  }
 `;
 
 const InfoBadge = styled.span`
@@ -192,23 +219,17 @@ const InfoBadge = styled.span`
     height: 12px;
     margin-right: ${props => props.theme.space[1]};
   }
-  
-  @media (prefers-color-scheme: dark) {
-    background-color: ${props => props.theme.colors.primary[900]};
-    color: ${props => props.theme.colors.primary[300]};
-  }
 `;
 
 const EmptyState = styled.div`
   text-align: center;
-  padding: ${props => props.theme.space[10]};
+  padding: ${props => props.theme.space[6]};
   color: ${props => props.theme.colors.gray[500]};
   background-color: ${props => props.theme.colors.gray[100]};
   border-radius: ${props => props.theme.radii.lg};
   
-  @media (prefers-color-scheme: dark) {
-    background-color: ${props => props.theme.colors.gray[800]};
-    color: ${props => props.theme.colors.gray[400]};
+  @media (min-width: 768px) {
+    padding: ${props => props.theme.space[10]};
   }
 `;
 
@@ -258,6 +279,7 @@ const Dashboard: React.FC = () => {
       </WelcomeSection>
       
       <Grid>
+        
         <Card>
           <CardContent>
             <IconWrapper>

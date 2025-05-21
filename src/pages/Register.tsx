@@ -24,15 +24,19 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${props => props.theme.space[4]};
+  padding: 1rem;
   background-color: #f3f3f3;
   position: relative;
+  
+  @media (min-width: 768px) {
+    padding: ${props => props.theme.space[4]};
+  }
 `;
 
 const BackButton = styled(Button)`
   position: absolute;
-  top: ${props => props.theme.space[4]};
-  left: ${props => props.theme.space[4]};
+  top: 1rem;
+  left: 1rem;
   width: 40px;
   height: 40px;
   padding: 0;
@@ -43,12 +47,22 @@ const BackButton = styled(Button)`
   svg {
     margin: 0;
   }
+  
+  @media (min-width: 768px) {
+    top: ${props => props.theme.space[4]};
+    left: ${props => props.theme.space[4]};
+  }
 `;
 
 const RegisterCard = styled(Card)`
   width: 100%;
   max-width: 450px;
   animation: ${fadeIn} 0.5s ease-out;
+  padding: 1.5rem;
+  
+  @media (min-width: 768px) {
+    padding: ${props => props.theme.space[6]};
+  }
 `;
 
 const CardHeader = styled.div`
@@ -61,22 +75,34 @@ const Logo = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: ${props => props.theme.space[6]};
-  font-size: ${props => props.theme.fontSizes['4xl']};
+  font-size: 2rem;
   font-weight: 700;
   color: ${props => props.theme.colors.primary[600]};
   text-transform: uppercase;
   letter-spacing: -1px;
+  
+  @media (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes['4xl']};
+  }
 `;
 
 const Title = styled.h1`
   margin-bottom: ${props => props.theme.space[2]};
   color: ${props => props.theme.colors.gray[900]};
-  font-size: ${props => props.theme.fontSizes['2xl']};
+  font-size: 1.5rem;
+  
+  @media (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes['2xl']};
+  }
 `;
 
 const Subtitle = styled.p`
   color: ${props => props.theme.colors.gray[600]};
-  font-size: ${props => props.theme.fontSizes.base};
+  font-size: 0.875rem;
+  
+  @media (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes.base};
+  }
 `;
 
 const Form = styled.form`
@@ -180,7 +206,7 @@ const Register = () => {
       <BackButton variant="outline" onClick={() => navigate('/')}>
         <Home size={16} />
       </BackButton>
-
+      
       <RegisterCard>
         <CardHeader>
           <Logo>GMX</Logo>
