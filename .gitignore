@@ -1,1 +1,14 @@
-node_modules
+*.log
+*.lock
+*.tmp
+*.tmp.*
+log.txt
+
+.vscode/
+node_modules/
+$RECYCLE.BIN/
+
+.DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
+.env
