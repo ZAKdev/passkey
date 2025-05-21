@@ -19,13 +19,14 @@ const elevations = {
 
 const Card = styled.div<CardProps>`
   background-color: white;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-base);
   box-shadow: ${props => elevations[props.elevation || 'md']};
   padding: ${props => paddings[props.padding || 'md']};
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease;
+  border: 1px solid var(--color-gray-100);
   
-  @media (prefers-color-scheme: dark) {
-    background-color: var(--color-gray-800);
+  &:hover {
+    box-shadow: ${props => elevations[props.elevation === 'sm' ? 'md' : 'lg']};
   }
 `;
 

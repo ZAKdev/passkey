@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import { KeyRound, LogOut, Shield, User } from 'lucide-react';
+import { LogOut, Shield, User } from 'lucide-react';
 import Button from './Button';
 import { useAuth } from '../context/AuthContext';
 
@@ -13,6 +13,7 @@ const Container = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: white;
 `;
 
 const Header = styled.header`
@@ -26,15 +27,6 @@ const Header = styled.header`
   top: 0;
   z-index: 10;
   box-shadow: ${props => props.theme.shadows.sm};
-  
-  @media (prefers-color-scheme: dark) {
-    background-color: ${props => props.theme.colors.gray[900]};
-    border-bottom-color: ${props => props.theme.colors.gray[700]};
-  }
-  
-  @media (max-width: ${props => props.theme.breakpoints.md}) {
-    padding: ${props => props.theme.space[4]};
-  }
 `;
 
 const Logo = styled.div`
@@ -43,11 +35,8 @@ const Logo = styled.div`
   font-weight: 700;
   font-size: ${props => props.theme.fontSizes['2xl']};
   color: ${props => props.theme.colors.primary[600]};
-  
-  svg {
-    margin-right: ${props => props.theme.space[2]};
-    color: ${props => props.theme.colors.primary[500]};
-  }
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
 `;
 
 const Main = styled.main`
@@ -56,23 +45,16 @@ const Main = styled.main`
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  
-  @media (max-width: ${props => props.theme.breakpoints.md}) {
-    padding: ${props => props.theme.space[4]};
-  }
+  background-color: white;
 `;
 
 const Footer = styled.footer`
-  background-color: ${props => props.theme.colors.gray[100]};
+  background-color: white;
+  border-top: 1px solid ${props => props.theme.colors.gray[200]};
   padding: ${props => props.theme.space[4]} ${props => props.theme.space[6]};
   text-align: center;
   font-size: ${props => props.theme.fontSizes.sm};
   color: ${props => props.theme.colors.gray[600]};
-  
-  @media (prefers-color-scheme: dark) {
-    background-color: ${props => props.theme.colors.gray[800]};
-    color: ${props => props.theme.colors.gray[400]};
-  }
 `;
 
 const UserSection = styled.div`
@@ -91,10 +73,6 @@ const UserInfo = styled.div`
   svg {
     margin-right: ${props => props.theme.space[2]};
   }
-  
-  @media (prefers-color-scheme: dark) {
-    color: ${props => props.theme.colors.gray[300]};
-  }
 `;
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
@@ -111,8 +89,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <Container>
       <Header>
         <Logo>
-          <KeyRound size={24} />
-          PassKey
+          GMX
         </Logo>
         {isAuthenticated && user && (
           <UserSection>
@@ -130,7 +107,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Main>{children}</Main>
       <Footer>
         <Shield size={14} style={{ verticalAlign: 'middle', marginRight: '5px' }} />
-        Secured with WebAuthn Passkeys &copy; {new Date().getFullYear()}
+        Secured with GMX WebAuthn &copy; {new Date().getFullYear()}
       </Footer>
     </Container>
   );
