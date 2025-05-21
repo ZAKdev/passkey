@@ -21,9 +21,14 @@ const BackButton = styled(Button)`
   width: 40px;
   height: 40px;
   padding: 0;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  
+  svg {
+    margin: 0;
+  }
 `;
 
 const WelcomeSection = styled.div`
