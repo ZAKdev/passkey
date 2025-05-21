@@ -34,23 +34,25 @@ const Container = styled.div`
 `;
 
 const BackButton = styled(Button)`
-  position: absolute;
+  position: fixed;
   top: 1rem;
   left: 1rem;
+  z-index: 10;
   width: 40px;
   height: 40px;
   padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
   svg {
     margin: 0;
   }
   
   @media (min-width: 768px) {
-    top: ${props => props.theme.space[4]};
-    left: ${props => props.theme.space[4]};
+    position: absolute;
   }
 `;
 
@@ -59,9 +61,11 @@ const LoginCard = styled(Card)`
   max-width: 450px;
   animation: ${fadeIn} 0.5s ease-out;
   padding: 1.5rem;
+  margin-top: 3rem;
   
   @media (min-width: 768px) {
     padding: ${props => props.theme.space[6]};
+    margin-top: 0;
   }
 `;
 
@@ -138,6 +142,7 @@ const PasskeyButton = styled(Button)`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: ${props => props.theme.space[2]};
 `;
 
 const Footer = styled.div`
