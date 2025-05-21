@@ -50,7 +50,7 @@ const AuthButton = styled(Button)`
   border: none;
   
   &:hover {
-    background-color: #f8f9fa;
+    background-color: #e9ecef;
     color: #1e4b9c;
   }
 `;
