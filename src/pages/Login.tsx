@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Fingerprint, KeyRound, Mail, ArrowRight } from 'lucide-react';
+import { Fingerprint, Mail, ArrowRight } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -25,15 +25,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: ${props => props.theme.space[4]};
-  background: linear-gradient(135deg, 
-    ${props => props.theme.colors.primary[50]} 0%, 
-    ${props => props.theme.colors.accent[50]} 100%);
-    
-  @media (prefers-color-scheme: dark) {
-    background: linear-gradient(135deg, 
-      ${props => props.theme.colors.primary[900]} 0%, 
-      ${props => props.theme.colors.accent[900]} 100%);
-  }
+  background-color: white;
 `;
 
 const LoginCard = styled(Card)`
@@ -52,12 +44,11 @@ const Logo = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: ${props => props.theme.space[6]};
-  
-  svg {
-    width: 48px;
-    height: 48px;
-    color: ${props => props.theme.colors.primary[500]};
-  }
+  font-size: ${props => props.theme.fontSizes['4xl']};
+  font-weight: 700;
+  color: ${props => props.theme.colors.primary[600]};
+  text-transform: uppercase;
+  letter-spacing: -1px;
 `;
 
 const Title = styled.h1`
@@ -214,7 +205,7 @@ const Login: React.FC = () => {
       <LoginCard>
         <CardHeader>
           <Logo>
-            <KeyRound size={48} />
+            GMX
           </Logo>
           <Title>Welcome Back</Title>
           <Subtitle>Sign in to your account using passkeys</Subtitle>
