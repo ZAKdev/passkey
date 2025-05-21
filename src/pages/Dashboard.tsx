@@ -16,7 +16,7 @@ const WelcomeSection = styled.div`
 `;
 
 const Title = styled.h1`
-  color: ${props => props.theme.colors.gray[900]};
+  color: #1c449b;
   margin-bottom: ${props => props.theme.space[2]};
   
   @media (prefers-color-scheme: dark) {
