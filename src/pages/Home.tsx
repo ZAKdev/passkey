@@ -46,12 +46,12 @@ const UserName = styled.span`
 
 const AuthButton = styled(Button)`
   background-color: white;
-  color: #1e4b9c;
+  color: #6e9804;
   border: none;
   
   &:hover {
-    background-color: #e9ecef;
-    color: #1e4b9c;
+    background-color: #f8f9fa;
+    color: #6e9804;
   }
 `;
 
