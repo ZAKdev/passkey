@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { PlusCircle, Fingerprint, Key, KeyRound, Shield, ArrowRight, Smartphone, ArrowLeft } from 'lucide-react';
+import { PlusCircle, Fingerprint, Key, KeyRound, Shield, ArrowRight, Smartphone, Home } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import { useAuth } from '../context/AuthContext';
@@ -229,8 +229,7 @@ const Dashboard: React.FC = () => {
   return (
     <DashboardContainer>
       <BackButton variant="outline" onClick={() => navigate('/')}>
-        <ArrowLeft size={16} />
-        Back to Home
+        <Home size={16} />
       </BackButton>
 
       <WelcomeSection>

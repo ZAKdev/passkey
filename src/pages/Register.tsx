@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Fingerprint, Mail, User, ArrowRight, Info, ArrowLeft } from 'lucide-react';
+import { Fingerprint, Mail, User, ArrowRight, Info, Home } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -168,8 +168,7 @@ const Register = () => {
   return (
     <Container>
       <BackButton variant="outline" onClick={() => navigate('/')}>
-        <ArrowLeft size={16} />
-        Back to Home
+        <Home size={16} />
       </BackButton>
 
       <RegisterCard>
