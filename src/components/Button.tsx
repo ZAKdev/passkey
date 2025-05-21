@@ -12,7 +12,7 @@ interface ButtonProps {
 
 const sizeStyles = {
   sm: css`
-    height: 2.25rem;
+    height: 2rem;
     padding: 0 ${props => props.theme.space[3]};
     font-size: ${props => props.theme.fontSizes.sm};
     border-radius: ${props => props.theme.radii.base};
@@ -20,14 +20,14 @@ const sizeStyles = {
   md: css`
     height: 2.5rem;
     padding: 0 ${props => props.theme.space[4]};
-    font-size: ${props => props.theme.fontSizes.md};
+    font-size: ${props => props.theme.fontSizes.base};
     border-radius: ${props => props.theme.radii.base};
   `,
   lg: css`
-    height: 2.75rem;
+    height: 3rem;
     padding: 0 ${props => props.theme.space[5]};
     font-size: ${props => props.theme.fontSizes.lg};
-    border-radius: ${props => props.theme.radii.md};
+    border-radius: ${props => props.theme.radii.base};
   `,
 };
 
@@ -36,6 +36,7 @@ const variantStyles = {
     background-color: ${props => props.theme.colors.primary[500]};
     color: white;
     border: none;
+    font-weight: 600;
     
     &:hover:not(:disabled) {
       background-color: ${props => props.theme.colors.primary[600]};
@@ -49,6 +50,7 @@ const variantStyles = {
     background-color: ${props => props.theme.colors.secondary[500]};
     color: white;
     border: none;
+    font-weight: 600;
     
     &:hover:not(:disabled) {
       background-color: ${props => props.theme.colors.secondary[600]};
@@ -60,11 +62,14 @@ const variantStyles = {
   `,
   outline: css`
     background-color: transparent;
-    color: ${props => props.theme.colors.primary[500]};
-    border: 1px solid ${props => props.theme.colors.primary[500]};
+    color: ${props => props.theme.colors.primary[600]};
+    border: 1px solid ${props => props.theme.colors.primary[600]};
+    font-weight: 600;
     
     &:hover:not(:disabled) {
       background-color: ${props => props.theme.colors.primary[50]};
+      border-color: ${props => props.theme.colors.primary[700]};
+      color: ${props => props.theme.colors.primary[700]};
     }
     
     &:active:not(:disabled) {
@@ -73,8 +78,9 @@ const variantStyles = {
   `,
   ghost: css`
     background-color: transparent;
-    color: ${props => props.theme.colors.primary[500]};
+    color: ${props => props.theme.colors.primary[600]};
     border: none;
+    font-weight: 600;
     
     &:hover:not(:disabled) {
       background-color: ${props => props.theme.colors.primary[50]};
@@ -88,9 +94,10 @@ const variantStyles = {
     background-color: ${props => props.theme.colors.error[500]};
     color: white;
     border: none;
+    font-weight: 600;
     
     &:hover:not(:disabled) {
-      background-color: ${props => props.theme.colors.error[700]};
+      background-color: ${props => props.theme.colors.error[600]};
     }
     
     &:active:not(:disabled) {
@@ -103,7 +110,6 @@ const Button = styled.button<ButtonProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
   transition: all 0.2s ease;
   white-space: nowrap;
   outline: none;
@@ -114,21 +120,17 @@ const Button = styled.button<ButtonProps>`
   ${props => variantStyles[props.variant || 'primary']}
   
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.6;
     cursor: not-allowed;
   }
   
-  /* Subtle hover animation */
-  transform: translateY(0);
-  
+  /* GMX-style hover effect */
   &:hover:not(:disabled) {
     transform: translateY(-1px);
-    box-shadow: ${props => props.theme.shadows.sm};
   }
   
   &:active:not(:disabled) {
     transform: translateY(0);
-    box-shadow: none;
   }
   
   /* Icon spacing */

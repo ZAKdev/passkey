@@ -2,97 +2,100 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    /* Color system */
-    --color-primary-50: #e6f1fe;
-    --color-primary-100: #cce3fd;
-    --color-primary-200: #99c7fb;
-    --color-primary-300: #66abf9;
-    --color-primary-400: #338ef7;
-    --color-primary-500: #0070f3;
-    --color-primary-600: #005ac2;
-    --color-primary-700: #004391;
-    --color-primary-800: #002d61;
-    --color-primary-900: #001630;
+    /* GMX Color system */
+    --color-primary-50: #e8f4ff;
+    --color-primary-100: #d1e9ff;
+    --color-primary-200: #a3d3ff;
+    --color-primary-300: #75bdff;
+    --color-primary-400: #47a7ff;
+    --color-primary-500: #1991ff;
+    --color-primary-600: #0073e6;
+    --color-primary-700: #0057b3;
+    --color-primary-800: #003b80;
+    --color-primary-900: #001f4d;
     
-    --color-secondary-50: #ecfdf5;
-    --color-secondary-100: #d1fae5;
-    --color-secondary-200: #a7f3d0;
-    --color-secondary-300: #6ee7b7;
-    --color-secondary-400: #34d399;
-    --color-secondary-500: #10b981;
-    --color-secondary-600: #059669;
-    --color-secondary-700: #047857;
-    --color-secondary-800: #065f46;
-    --color-secondary-900: #064e3b;
+    --color-secondary-50: #f5f6f7;
+    --color-secondary-100: #e6e9ec;
+    --color-secondary-200: #ccd3d9;
+    --color-secondary-300: #b3bdc6;
+    --color-secondary-400: #99a7b3;
+    --color-secondary-500: #8091a0;
+    --color-secondary-600: #667b8c;
+    --color-secondary-700: #4d6579;
+    --color-secondary-800: #334f66;
+    --color-secondary-900: #1a3953;
     
-    --color-accent-50: #f5f3ff;
-    --color-accent-100: #ede9fe;
-    --color-accent-200: #ddd6fe;
-    --color-accent-300: #c4b5fd;
-    --color-accent-400: #a78bfa;
-    --color-accent-500: #8b5cf6;
-    --color-accent-600: #7c3aed;
-    --color-accent-700: #6d28d9;
-    --color-accent-800: #5b21b6;
-    --color-accent-900: #4c1d95;
+    --color-accent-50: #fff8e6;
+    --color-accent-100: #fff1cc;
+    --color-accent-200: #ffe499;
+    --color-accent-300: #ffd666;
+    --color-accent-400: #ffc933;
+    --color-accent-500: #ffbb00;
+    --color-accent-600: #cc9600;
+    --color-accent-700: #997000;
+    --color-accent-800: #664b00;
+    --color-accent-900: #332500;
     
-    --color-success-50: #ecfdf5;
-    --color-success-500: #10b981;
-    --color-success-700: #047857;
+    --color-success-50: #e6f7ed;
+    --color-success-500: #00b347;
+    --color-success-700: #008435;
     
-    --color-warning-50: #fffbeb;
-    --color-warning-500: #f59e0b;
-    --color-warning-700: #b45309;
+    --color-warning-50: #fff3e6;
+    --color-warning-500: #ff9500;
+    --color-warning-700: #cc7600;
     
-    --color-error-50: #fef2f2;
-    --color-error-500: #ef4444;
-    --color-error-700: #b91c1c;
+    --color-error-50: #ffeaea;
+    --color-error-500: #ff0000;
+    --color-error-700: #cc0000;
     
-    --color-gray-50: #f9fafb;
-    --color-gray-100: #f3f4f6;
-    --color-gray-200: #e5e7eb;
-    --color-gray-300: #d1d5db;
-    --color-gray-400: #9ca3af;
-    --color-gray-500: #6b7280;
-    --color-gray-600: #4b5563;
-    --color-gray-700: #374151;
-    --color-gray-800: #1f2937;
-    --color-gray-900: #111827;
+    --color-gray-50: #f5f6f7;
+    --color-gray-100: #e6e9ec;
+    --color-gray-200: #ccd3d9;
+    --color-gray-300: #b3bdc6;
+    --color-gray-400: #99a7b3;
+    --color-gray-500: #8091a0;
+    --color-gray-600: #667b8c;
+    --color-gray-700: #4d6579;
+    --color-gray-800: #334f66;
+    --color-gray-900: #1a3953;
     
-    /* Spacing system (8px) */
-    --space-1: 0.25rem; /* 4px */
-    --space-2: 0.5rem;  /* 8px */
-    --space-3: 0.75rem; /* 12px */
-    --space-4: 1rem;    /* 16px */
-    --space-5: 1.25rem; /* 20px */
-    --space-6: 1.5rem;  /* 24px */
-    --space-8: 2rem;    /* 32px */
-    --space-10: 2.5rem; /* 40px */
-    --space-12: 3rem;   /* 48px */
-    --space-16: 4rem;   /* 64px */
-    --space-20: 5rem;   /* 80px */
+    /* GMX Font */
+    --font-sans: "GMX", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+                 Helvetica, Arial, sans-serif;
     
-    /* Font */
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
-                 Helvetica, Arial, sans-serif, "Apple Color Emoji", 
-                 "Segoe UI Emoji", "Segoe UI Symbol";
+    /* GMX Font Sizes */
+    --font-size-xs: 0.75rem;    /* 12px */
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-base: 1rem;     /* 16px */
+    --font-size-lg: 1.125rem;   /* 18px */
+    --font-size-xl: 1.25rem;    /* 20px */
+    --font-size-2xl: 1.5rem;    /* 24px */
+    --font-size-3xl: 1.875rem;  /* 30px */
+    --font-size-4xl: 2.25rem;   /* 36px */
     
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    /* GMX Spacing */
+    --space-1: 0.25rem;  /* 4px */
+    --space-2: 0.5rem;   /* 8px */
+    --space-3: 0.75rem;  /* 12px */
+    --space-4: 1rem;     /* 16px */
+    --space-5: 1.25rem;  /* 20px */
+    --space-6: 1.5rem;   /* 24px */
+    --space-8: 2rem;     /* 32px */
+    --space-10: 2.5rem;  /* 40px */
+    --space-12: 3rem;    /* 48px */
     
-    /* Border radius */
-    --radius-sm: 0.125rem; /* 2px */
-    --radius: 0.25rem;     /* 4px */
-    --radius-md: 0.375rem; /* 6px */
-    --radius-lg: 0.5rem;   /* 8px */
-    --radius-xl: 0.75rem;  /* 12px */
-    --radius-2xl: 1rem;    /* 16px */
-    --radius-3xl: 1.5rem;  /* 24px */
+    /* GMX Border Radius */
+    --radius-sm: 0.125rem;
+    --radius: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
     --radius-full: 9999px;
+    
+    /* GMX Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   }
 
   * {
@@ -104,34 +107,36 @@ const GlobalStyle = createGlobalStyle`
   html,
   body {
     font-family: var(--font-sans);
-    font-size: 16px;
+    font-size: var(--font-size-base);
     line-height: 1.5;
     background-color: var(--color-gray-50);
     color: var(--color-gray-900);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  body {
-    min-height: 100vh;
+  h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    line-height: 1.2;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: var(--font-size-2xl);
     font-weight: 600;
     line-height: 1.2;
   }
 
-  h1 {
-    font-size: 2.25rem;
-    margin-bottom: var(--space-6);
-  }
-
-  h2 {
-    font-size: 1.875rem;
-    margin-bottom: var(--space-5);
-  }
-
-  h3 {
-    font-size: 1.5rem;
-    margin-bottom: var(--space-4);
+  h4 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    line-height: 1.2;
   }
 
   p {
@@ -139,35 +144,32 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: var(--color-primary-500);
+    color: var(--color-primary-600);
     text-decoration: none;
     
     &:hover {
+      color: var(--color-primary-700);
       text-decoration: underline;
     }
   }
 
   button {
+    font-family: var(--font-sans);
     cursor: pointer;
-  }
-
-  /* Light/Dark mode transition */
-  * {
-    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-gray-50: #111827;
-      --color-gray-100: #1f2937;
-      --color-gray-200: #374151;
-      --color-gray-300: #4b5563;
-      --color-gray-400: #6b7280;
-      --color-gray-500: #9ca3af;
-      --color-gray-600: #d1d5db;
-      --color-gray-700: #e5e7eb;
-      --color-gray-800: #f3f4f6;
-      --color-gray-900: #f9fafb;
+      --color-gray-50: #1a3953;
+      --color-gray-100: #334f66;
+      --color-gray-200: #4d6579;
+      --color-gray-300: #667b8c;
+      --color-gray-400: #8091a0;
+      --color-gray-500: #99a7b3;
+      --color-gray-600: #b3bdc6;
+      --color-gray-700: #ccd3d9;
+      --color-gray-800: #e6e9ec;
+      --color-gray-900: #f5f6f7;
     }
     
     body {

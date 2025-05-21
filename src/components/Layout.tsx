@@ -40,18 +40,22 @@ const Header = styled.header`
 const Logo = styled.div`
   display: flex;
   align-items: center;
-  font-weight: 600;
-  font-size: ${props => props.theme.fontSizes.xl};
-  color: ${props => props.theme.colors.primary[500]};
+  font-weight: 700;
+  font-size: ${props => props.theme.fontSizes['2xl']};
+  color: ${props => props.theme.colors.primary[600]};
   
   svg {
     margin-right: ${props => props.theme.space[2]};
+    color: ${props => props.theme.colors.primary[500]};
   }
 `;
 
 const Main = styled.main`
   flex: 1;
   padding: ${props => props.theme.space[6]};
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
   
   @media (max-width: ${props => props.theme.breakpoints.md}) {
     padding: ${props => props.theme.space[4]};
@@ -69,22 +73,12 @@ const Footer = styled.footer`
     background-color: ${props => props.theme.colors.gray[800]};
     color: ${props => props.theme.colors.gray[400]};
   }
-  
-  @media (max-width: ${props => props.theme.breakpoints.md}) {
-    padding: ${props => props.theme.space[4]};
-  }
 `;
 
 const UserSection = styled.div`
   display: flex;
   align-items: center;
   gap: ${props => props.theme.space[3]};
-  
-  @media (max-width: ${props => props.theme.breakpoints.sm}) {
-    .user-name {
-      display: none;
-    }
-  }
 `;
 
 const UserInfo = styled.div`
@@ -92,6 +86,7 @@ const UserInfo = styled.div`
   align-items: center;
   color: ${props => props.theme.colors.gray[700]};
   font-size: ${props => props.theme.fontSizes.sm};
+  font-weight: 500;
   
   svg {
     margin-right: ${props => props.theme.space[2]};
@@ -106,7 +101,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
   const { isAuthenticated, user, logout } = useAuth();
   
-  // Don't show header/footer on auth pages
   const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
 
   if (isAuthPage) {
@@ -118,27 +112,25 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Header>
         <Logo>
           <KeyRound size={24} />
-          <span>PassKey</span>
+          PassKey
         </Logo>
         {isAuthenticated && user && (
           <UserSection>
             <UserInfo>
               <User size={16} />
-              <span className="user-name">{user.displayName}</span>
+              {user.displayName}
             </UserInfo>
             <Button variant="ghost" size="sm" onClick={logout}>
               <LogOut size={16} />
-              <span className="user-name">Logout</span>
+              Logout
             </Button>
           </UserSection>
         )}
       </Header>
       <Main>{children}</Main>
       <Footer>
-        <p>
-          <Shield size={14} style={{ verticalAlign: 'middle', marginRight: '5px' }} />
-          Secured with WebAuthn Passkeys &copy; {new Date().getFullYear()}
-        </p>
+        <Shield size={14} style={{ verticalAlign: 'middle', marginRight: '5px' }} />
+        Secured with WebAuthn Passkeys &copy; {new Date().getFullYear()}
       </Footer>
     </Container>
   );
