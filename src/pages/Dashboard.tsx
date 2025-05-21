@@ -22,7 +22,7 @@ const WelcomeSection = styled.div`
 `;
 
 const Title = styled.h1`
-  color: red;
+  color: #1c449b;
   margin-bottom: ${props => props.theme.space[2]};
   font-size: 1.5rem;
   
@@ -120,7 +120,7 @@ const Section = styled.div`
 
 const SectionTitle = styled.h2`
   margin-bottom: ${props => props.theme.space[4]};
-  color: red;
+  color:#1c449b;
   display: flex;
   align-items: center;
   font-size: 1.25rem;
