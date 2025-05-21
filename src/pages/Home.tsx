@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
+import { useAuth } from '../context/AuthContext';
 
 const Container = styled.div`
   min-height: 100vh;
@@ -122,13 +123,23 @@ const FeatureDescription = styled.p`
 
 const Home = () => {
   const navigate = useNavigate();
+  const { isAuthenticated, logout } = useAuth();
+
+  const handleAuthAction = () => {
+    if (isAuthenticated) {
+      logout();
+      navigate('/');
+    } else {
+      navigate('/login');
+    }
+  };
 
   return (
     <Container>
       <Navbar>
         <Logo>GMX</Logo>
-        <Button variant="outline" onClick={() => navigate('/login')}>
-          Log in
+        <Button variant="outline" onClick={handleAuthAction}>
+          {isAuthenticated ? 'Logout' : 'Log in'}
         </Button>
       </Navbar>
 
@@ -137,8 +148,8 @@ const Home = () => {
         <HeroSubtitle>
           Experience passwordless login with enhanced security
         </HeroSubtitle>
-        <Button size="lg" onClick={() => navigate('/register')}>
-          Get Started
+        <Button size="lg" onClick={() => navigate(isAuthenticated ? '/dashboard' : '/register')}>
+          {isAuthenticated ? 'Go to Dashboard' : 'Get Started'}
         </Button>
       </HeroSection>
 
