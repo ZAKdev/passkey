@@ -1,4 +1,4 @@
-// Same changes as Login.tsx for the Container and Logo components
+import styled from 'styled-components';
 
 const Container = styled.div`
   min-height: 100vh;
