@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Fingerprint, Mail, ArrowRight } from 'lucide-react';
+import { Fingerprint, Mail, ArrowRight, ArrowLeft } from 'lucide-react';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -99,6 +99,12 @@ const PasskeyButton = styled(Button)`
   }
 `;
 
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: ${props => props.theme.space[4]};
+  margin-bottom: ${props => props.theme.space[4]};
+`;
+
 const Footer = styled.div`
   text-align: center;
   font-size: ${props => props.theme.fontSizes.sm};
@@ -193,10 +199,16 @@ const Login = () => {
           </Alert>
         )}
         
-        <PasskeyButton fullWidth onClick={handlePasskeyLogin} disabled={isSubmitting}>
-          <Fingerprint size={20} />
-          Sign in with Passkey
-        </PasskeyButton>
+        <ButtonGroup>
+          <Button variant="outline" onClick={() => navigate('/')}>
+            <ArrowLeft size={20} />
+            Back to Home
+          </Button>
+          <PasskeyButton onClick={handlePasskeyLogin} disabled={isSubmitting}>
+            <Fingerprint size={20} />
+            Sign in with Passkey
+          </PasskeyButton>
+        </ButtonGroup>
         
         <Divider>
           <span>or continue with username</span>
