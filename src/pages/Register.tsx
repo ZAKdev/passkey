@@ -26,3 +26,5 @@ const Logo = styled.div`
 <Logo>
   GMX
 </Logo>
+
+export default Logo
