@@ -81,7 +81,7 @@ const Logo = styled.div`
   margin-bottom: ${props => props.theme.space[6]};
   font-size: 2rem;
   font-weight: 700;
-  color: ${props => props.theme.colors.primary[600]};
+  color: #1c449b;
   text-transform: uppercase;
   letter-spacing: -1px;
   
@@ -151,10 +151,11 @@ const Footer = styled.div`
   color: ${props => props.theme.colors.gray[600]};
   
   a {
-    color: ${props => props.theme.colors.primary[600]};
+    color: #6e9804;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
+    text-decoration: none;
     
     svg {
       margin-left: ${props => props.theme.space[1]};
@@ -162,8 +163,8 @@ const Footer = styled.div`
     }
     
     &:hover {
+      color: #587a03;
       text-decoration: none;
-      color: ${props => props.theme.colors.primary[700]};
       
       svg {
         transform: translateX(2px);

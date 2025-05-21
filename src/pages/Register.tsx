@@ -145,15 +145,15 @@ const Footer = styled.div`
   color: ${props => props.theme.colors.gray[600]};
   
   a {
-    color: ${props => props.theme.colors.primary[600]};
+    color: #6e9804;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: ${props => props.theme.space[1]};
     
     &:hover {
+      color: #587a03;
       text-decoration: none;
-      color: ${props => props.theme.colors.primary[700]};
       
       svg {
         transform: translateX(2px);
