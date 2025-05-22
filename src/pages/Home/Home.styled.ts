@@ -86,6 +86,64 @@ export const HeroSubtitle = styled.p`
     }
 `;
 
+export const UsersSection = styled.div`
+    padding: 4rem 1rem;
+    background-color: white;
+    
+    @media (min-width: 768px) {
+        padding: 6rem 2rem;
+    }
+`;
+
+export const UsersSectionTitle = styled.h2`
+    text-align: center;
+    color: #1e4b9c;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+`;
+
+export const UsersGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+`;
+
+export const UserCard = styled.div`
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    
+    &:hover {
+        transform: translateY(-4px);
+    }
+`;
+
+export const UserAvatar = styled.img`
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: block;
+`;
+
+export const UserCardName = styled.h3`
+    text-align: center;
+    color: #1e4b9c;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+`;
+
+export const UserCardEmail = styled.p`
+    text-align: center;
+    color: #666;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+`;
+
 export const FeaturesSection = styled.div`
     padding: 2rem 1rem;
     background-color: #f8f9fa;
