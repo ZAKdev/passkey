@@ -36,9 +36,9 @@ const Home = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch('https://jsonplaceholder.typicode.com/users');
+                const response = await fetch('https://dummyjson.com/users');
                 const data = await response.json();
-                setUsers(data.slice(0, 6)); // Only take first 6 users
+                setUsers(data.users.slice(0, 6)); // Only take first 6 users
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching users:', error);
@@ -91,10 +91,10 @@ const Home = () => {
                     {!loading && users.map(user => (
                         <UserCard key={user.id}>
                             <UserAvatar 
-                                src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user.username}`}
-                                alt={user.name}
+                                src={user.image}
+                                alt={user.firstName}
                             />
-                            <UserCardName>{user.name}</UserCardName>
+                            <UserCardName>{`${user.firstName} ${user.lastName}`}</UserCardName>
                             <UserCardEmail>{user.email}</UserCardEmail>
                         </UserCard>
                     ))}

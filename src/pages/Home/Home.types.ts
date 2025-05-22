@@ -4,7 +4,8 @@ export interface HomeProps {
 
 export interface User {
     id: number;
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
-    username: string;
+    image: string;
 }

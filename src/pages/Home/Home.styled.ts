@@ -129,6 +129,7 @@ export const UserAvatar = styled.img`
     border-radius: 50%;
     margin: 0 auto 1rem;
     display: block;
+    object-fit: cover;
 `;
 
 export const UserCardName = styled.h3`
